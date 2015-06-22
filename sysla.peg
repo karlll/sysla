@@ -1,0 +1,19 @@
+package main
+
+type Sysla Peg {
+
+}
+
+PredicateLst <- Spacing Predicate+ EOT
+Predicate <- 'test' Spacing
+Spacing <- ( WhiteSpace / LineComment )*
+WhiteSpace  <- [ \n\r\t]
+LineComment <- '#' (!'\n' .)*
+
+# Keywords
+
+
+
+
+
+EOT <- !.
