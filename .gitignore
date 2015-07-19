@@ -1,4 +1,4 @@
-sysla
+
 sysla.peg.go
 
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
@@ -25,3 +25,5 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+dev.sh

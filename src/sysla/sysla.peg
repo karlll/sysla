@@ -1,0 +1,93 @@
+package main
+
+type Sysla Peg {
+
+}
+
+Phrases <- Ws Phrase+ EOI
+Phrase <- Ws Form Ws EOS Ws
+
+# Forms
+
+Form <- Form1
+
+Form1 <- Qualifier Ws Subject Ws Auxillary Ws Attribute Ws Predicate Ws Value
+
+# Qualifier
+
+Qualifier <- ("the" / "no" / "all")
+
+# Subject
+
+Subject <- SubjectForm1 / SubjectForm2
+SubjectForm1 <- Identifier Ws StringValue  # ex. inteface "eth0"
+SubjectForm2 <- Identifier                 # ex. current_directory
+
+# Identifier
+
+Identifier <- NonDigit IdChar*
+NonDigit <- [a-z] / [A-Z] / [_]
+IdChar <- [a-z] / [A-Z] / [0-9] / [_]
+
+# Auxillary
+
+Auxillary <- "have" / "has" / "is"
+
+# Attribute
+
+Attribute <- StringValue
+
+# Predicate
+
+Predicate <- Match / Identity / Relation
+
+Relation <- Equality / GreaterThan / MoreThan / LessThan / In
+
+Match <- NEGATE_MATCH / MATCH
+Equality <- NEGATE_EQUALITY / EQUALITY
+Identity <- NEGATE_IDENTITY / IDENTITY
+GreaterThan <- NEGATE_GT / GT
+MoreThan <- NEGATE_MT / MT
+LessThan <- NEGATE_LT / LT
+In <- NEGATE_IN / IN
+
+NEGATE_IDENTITY <- "is"
+IDENTITY <- "is not" / "isn\'t"
+NEGATE_MATCH <- "not matching"
+MATCH <- "matching"
+NEGATE_EQUALITY <- "not equals" / "not equal"
+EQUALITY <- "equals" / "equal"
+NEGATE_GT <- "not greater than"
+GT <- "greater than"
+NEGATE_MT <- "not more than"
+MT <- "more than"
+NEGATE_LT <- "not less than"
+LT <- "less than"
+NEGATE_IN <- "not in"
+IN <- "in"
+
+# Values
+
+Value <- StringValue / IntegerValue / RegexValue
+
+StringValue <- ["] StringChar* ["]
+StringChar <- StringEscape / ![\"\n\\] .
+StringEscape <- '\\' ['\"?\\abfnrtv]
+
+RegexValue <- [/] RegexChar* [/]
+RegexChar <- ![/] .
+
+IntegerValue <- '-'? [1-9][0-9]*
+
+# Spacing
+
+Ws <- ( SP / NL / LINE_COMMENT )*
+
+SP <- [ \t]
+NL <- [\n\r]
+LINE_COMMENT <- '#' (!'\n' .)*
+
+# Punctuation
+
+EOS <- '.'
+EOI <- !.

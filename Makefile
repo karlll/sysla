@@ -1,9 +1,16 @@
+SRC=src/sysla
+PEG=peg
+BUILD=go build
+TEST=go test
 
-sysla.peg.go: sysla.peg
-	peg -inline -switch sysla.peg
+${SRC}/sysla.peg.go: ${SRC}/sysla.peg
+	$(PEG) ${SRC}/sysla.peg
 
-build: sysla.peg.go sysla_test.go
-	go build
+build: ${SRC}/sysla.peg.go ${SRC}/sysla_test.go
+	$(BUILD) sysla
 
 test: build
-	go test
+	${TEST} sysla
+
+clean:
+	rm -rf ${SRC}/sysla.peg.go sysla
