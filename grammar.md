@@ -11,19 +11,19 @@ Grammar
 
 ### Form I
 
-  QUALIFIER SUBJECT ATTRIBUTE PREDICATE VALUE
+    QUALIFIER SUBJECT ATTRIBUTE PREDICATE VALUE
 
 #### Examples
 
-  Qualitifer = one ('the') | no | all
+    Qualitifer = one ('the') | no | all
 
-  the X has Y matching V1
-  the X has Y not matching V2
-  the X has Y equals V3
+    the X has Y matching V1
+    the X has Y not matching V2
+    the X has Y equals V3
 
-  no I has J matching K
+    no I has J matching K
 
-  all R has S matching T
+    all R has S matching T
 
 #### Example phrases
 
@@ -34,10 +34,10 @@ Grammar
 
 ### Form II
 
-  QUALIFIER SUBJECT ATTRIBUTE PREDICATE ('exist' / 'exists')
+    QUALIFIER SUBJECT ATTRIBUTE PREDICATE ('exist' / 'exists')
 
 #### Examples
 
-  The process with "name" matching "/tmp/proc" exists.
-  The process with "name" not matching "/tmp/foo" exists.
-  No process with "name" matching "/tmp/foo" exists.
+    The process with "name" matching "/tmp/proc" exists.
+    The process with "name" not matching "/tmp/foo" exists.
+    No process with "name" matching "/tmp/foo" exists.

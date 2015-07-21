@@ -36,3 +36,7 @@ func TestParseForm1(t *testing.T) {
 	testParse("The device \"/dev/sd1\" have \"free_space_bytes\" more than 30000000.", t, false)
 	testParse("All interfaces have \"address\" matching  /.*/.", t, false)
 }
+
+func TestParseForm2(t *testing.T) {
+	testParse("The process with \"name\" matching /foobar/ exists.", t, false)
+}
